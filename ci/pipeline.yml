@@ -1,0 +1,14 @@
+resources:
+- name: buildme
+  type: git
+  source:
+    uri: https://github.com/zkmoney/buildme
+    branch: master
+
+jobs:
+- name: test-app
+  plan:
+  - get: buildme
+    trigger: true
+  - task: tests
+    file: buildme/ci/build.yml
